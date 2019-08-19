@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.EntranceToSite;
+import pages.LoginPageFactory;
 import pages.QuestionSet;
 
 import java.util.concurrent.TimeUnit;
@@ -26,8 +27,12 @@ public class CreateQuestionSet {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        EntranceToSite entrance = new EntranceToSite(driver);
-        entrance.entranceToSite();
+        LoginPageFactory openSite = new LoginPageFactory(driver);
+        openSite.openLoginPage();
+        openSite.login("tms1@mailinator.com", "Password01");
+
+       /* EntranceToSite entrance = new EntranceToSite(driver);
+        entrance.entranceToSite();*/
     }
 
     @Test
